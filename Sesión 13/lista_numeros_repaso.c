@@ -31,21 +31,36 @@ int main()
 			 * El siguiente ciclo recorre toda la lista
 			 * Se hace falsa cuando llega al final y
 			 * el número es distinto del ingresado
-			 * Comprobando donde apunta currentNum
 			*/
 			while(currentNumPointer != NULL && currentNumPointer->num != n)
 				currentNumPointer = currentNumPointer->next;
 
+			//Condición si no se encontró
 			if (currentNumPointer == NULL)
 			{
 				insert(&lista, n);
 			}
-			
-			
-
+			else
+				printf("El numero %d ya esta en la lista\n", n);
 		}
 	
 	} while(n != 0);
+
+	struct STRNUM *ptr = NULL, *todestroy = NULL;
+	ptr = lista.first;
+	while(ptr != NULL)
+	{
+		printf("%d\n", ptr->num);
+		ptr = ptr->next;
+	}
+
+	ptr=lista.first;
+	while(ptr!=NULL)
+	{
+		todestroy = ptr;
+		ptr = ptr->next;
+		free(todestroy);
+	}
 
 }
 
@@ -55,6 +70,13 @@ void insert(LIST *l,int n)
 	new->num = n;
 	new->next = NULL;
 
-	
+	if (l->first == NULL)
+	{
+		l->first = new;
+	}
+	else
+		l->last->next = new;
+
+	l->last = new;
 	
 }
