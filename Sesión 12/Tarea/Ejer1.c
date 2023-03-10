@@ -8,6 +8,10 @@ typedef struct strdate {
     struct strdate *next;
 } DATE;
 
+void printdates(DATE *d);
+void print3dates(DATE d);
+void insert(DATE **ptrinciolista,DATE *n);
+
 int main()
 {
     DATE d1={1,10,2019,NULL};
@@ -20,5 +24,42 @@ int main()
     insert(&iniciolista,&d2);
     insert(&iniciolista,&d3);
 
-    printdates(iniciolista);   
+    printdates(iniciolista);
+}
+
+void insert(DATE **ptriniciolista,DATE *n)
+{
+    /* Si la lista está vacia, es decir *ptriniciolista es NULL, debe apuntar
+       al primer elemento que se inserta
+       Si la lista no está vacía, hay que recorrer la lista hasta llegar al final
+       para insertar el elemento 
+    */
+   DATE *ptr = NULL;
+
+   if (*ptriniciolista == NULL)
+   {
+    *ptriniciolista = n;
+   }
+   else
+   {
+        //Recorrer la lista
+        ptr = *ptriniciolista;
+        while (ptr->next != NULL)
+        {
+            ptr = ptr->next;
+        }
+        ptr->next = n;
+   }
+   
+}
+
+void printdates(DATE *d)
+{
+   DATE *ptr=d;
+
+   while(ptr!=NULL)
+   {
+       printf("%d,%d,%d\n",ptr->year,ptr->month,ptr->day);
+       ptr=ptr->next;
+   }
 }
