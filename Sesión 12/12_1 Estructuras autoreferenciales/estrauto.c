@@ -1,11 +1,7 @@
 /*
- * estrauto.c
- *
- *  Created on: 6 mar 2023
- *      Author: jluis
+ * Introducción a estructuras autoreferenciales
  */
 #include <stdio.h>
-
 
 struct STRALUM {
 	char nombre[30];
@@ -13,11 +9,6 @@ struct STRALUM {
 	int expediente;
 	struct STRALUM *siguiente;
 };
-
-void encadenar(struct STRALUM *a, struct STARLUM *b)
-{
-    a->siguiente = b;
-}
 
 int main()
 {
@@ -32,19 +23,20 @@ int main()
 	struct STRALUM *ptr;
 
 	primero = &al3;
-    encadernar(&al3, &al5);
-    encadernar(&al5, &al6);
-    encadernar(&al6, &al1);
-    encadernar(&al1, &al4);
-    encadernar(&al4, &al2);
-    encadernar(&al2, NULL);
+	al3.siguiente = &al5;
+	al5.siguiente = &al6;
+	al6.siguiente = &al1;
+	al1.siguiente = &al4;
+	al4.siguiente = &al2;
 
+	al2.siguiente = NULL;
 
 	ptr = primero;
 
 	while(ptr!=NULL)
 	{
-		printf("%d\t%s  %s\n",ptr->expediente, ptr->nombre,ptr->apellido);
+		printf("%d\t%s  %s\n",ptr->expediente,
+				ptr->nombre,ptr->apellido);
 
 		ptr = ptr->siguiente;
 	}
