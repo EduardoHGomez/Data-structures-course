@@ -34,21 +34,18 @@ void insert(DATE **ptriniciolista,DATE *n)
        Si la lista no está vacía, hay que recorrer la lista hasta llegar al final
        para insertar el elemento 
     */
-   DATE *ptr = NULL;
 
+   DATE *currentDate;
    if (*ptriniciolista == NULL)
    {
     *ptriniciolista = n;
    }
    else
    {
-        //Recorrer la lista
-        ptr = *ptriniciolista;
-        while (ptr->next != NULL)
-        {
-            ptr = ptr->next;
-        }
-        ptr->next = n;
+        currentDate = *ptriniciolista;
+        while(currentDate->next != NULL)
+            currentDate = currentDate->next;
+        currentDate->next = n;
    }
    
 }
