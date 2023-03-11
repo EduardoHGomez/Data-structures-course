@@ -21,7 +21,10 @@ int main()
             {
                 printf("i = %d j = %d resultado = %d\n", i, *(lista_primos+j), i%*(lista_primos+j));
                 if (i%*(lista_primos+j) == 0)
+                {
                     printf("no es primo\n");
+                    break;
+                }
             }
             
         }
