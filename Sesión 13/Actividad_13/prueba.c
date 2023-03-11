@@ -1,30 +1,42 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int main()
 {
-    int n, size = 10;
-    printf("Ingrese un numero limite: ");
-    scanf("%d", &n);
+    int limite;
+    printf("Ingrese un numero: ");
+    scanf("%d", &limite);
 
-    int lista[10] = {0,0,0,0,0,0,0,0,0,0};
+    int SIZE = 1;
+    int *lista_primos = malloc(SIZE * sizeof(int));
+    *(lista_primos) = 2;
 
-    for (int i = 2; i < n; i++)
+    int resultado;
+    
+    for (int i = 2; i <= limite; i++)
     {
-        for (int j = 0; j < size; j++)
-        {
-            if (j % lista[i] == 0)
+        for (int j = 0; j < SIZE; j++)
+        {   
+            
+            if (i % *(lista_primos + j) != 0 && i > 2)
             {
-                lista[size] = i;
-                size++;
+                
+                SIZE++;
+                realloc(lista_primos, SIZE*sizeof(int));
+                *(lista_primos + SIZE - 1) = i;
+                
             }
         }
         
     }
 
-    for (int i = 0; i < size; i++)
+    printf("--\nSIZE: %d\n", SIZE);
+    for (int i = 0; i < SIZE; i++)
     {
-        printf("%d ", lista[i]);
+        printf("%d ", *(lista_primos+i));
     }
     
-
+    
+    free(lista_primos);
 }
+
