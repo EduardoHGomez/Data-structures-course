@@ -17,30 +17,15 @@ int main()
     {   is_prime = 1;
         for (int j = 0; j < SIZE; j++)
         {   
-            if (i != *(lista_primos+j))
+            if ((i != *(lista_primos+j)) && (i%*(lista_primos+j) == 0))  
             {
-                printf("i = %d j = %d resultado = %d\n", i, *(lista_primos+j), i%*(lista_primos+j));
-                if (i%*(lista_primos+j) == 0)
-                {
-                    printf("no es primo\n");
-                    break;
-                }
-            }
-            
+                is_prime = 0;
+                break;
+            } 
         }
-        printf("\n");
+        if (is_prime)
+            printf("%d es primo\n", i);
         
     }
 
-/**
- *     printf("--\nSIZE: %d\n", SIZE);
-    for (int i = 0; i < SIZE; i++)
-    {
-        printf("%d ", *(lista_primos+i));
-    }
-*/
-    
-    
-    free(lista_primos);
-}
 
