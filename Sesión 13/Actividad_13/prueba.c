@@ -25,7 +25,8 @@ int main()
                 break;
             } 
         }
-        if (is_prime && i > 2){
+        if (is_prime && i > 2)
+        {
             printf("%d es primo\n", i);
             SIZE++;
             lista_primos = realloc(lista_primos, SIZE * sizeof(int));

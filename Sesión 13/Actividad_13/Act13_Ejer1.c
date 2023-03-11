@@ -10,6 +10,8 @@ typedef struct {
     struct STRNUM *first, *last;
 } LIST;
 
+void insert(LIST *lista, int prime);
+
 int main()
 {
     int limite, is_prime, SIZE = 1;
@@ -38,9 +40,16 @@ int main()
             {
                 ptr = ptr->next;
                 is_prime = 0;
+                break;
             }
         }
         
+        if (is_prime && i > 2)
+        {
+            printf("%d es primo\n", i);
+            SIZE++;
+            insert(&lista, i);
+        }
         
     }
     
