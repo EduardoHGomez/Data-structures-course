@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
 int main()
 {
     int limite;
@@ -18,7 +19,7 @@ int main()
     {   is_prime = 1;
         for (int j = 0; j < SIZE; j++)
         {   
-            if ((i != *(lista_primos+j)) && (i%*(lista_primos+j) == 0) && (i > 2))  
+            if ((i != *(lista_primos+j)) && (i%*(lista_primos+j) == 0))  
             {
                 is_prime = 0;
                 break;
