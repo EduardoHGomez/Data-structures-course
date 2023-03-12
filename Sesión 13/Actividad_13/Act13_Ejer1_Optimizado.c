@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
 
 struct STRNUM {
     int num;
@@ -16,12 +17,15 @@ int es_primo(int n) {
     return 1;
 }
 
-int main(int argc, char *argv[]){
+int main(){
     struct STRNUM *first = NULL, *new = NULL, *todestroy = NULL, *ptr = NULL;
 
-    int n = atoi(argv[1]);
+    int n;
 
-    printf("Hasta que numero quieres que se verifique que numeros son primos: %d", n);
+    printf("Hasta que numero quieres que se verifique que numeros son primos: ");
+    scanf("%d", &n);
+    clock_t begin = clock();
+
     printf("\n");
 
     for(int i = 2; i <= n; i++){
@@ -57,6 +61,11 @@ int main(int argc, char *argv[]){
         ptr = ptr->next;
         free(todestroy);
     }
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+
+    printf("Tiempo consumido: %f", time_spent);
 
     return 0;
 }
