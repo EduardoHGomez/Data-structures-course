@@ -19,15 +19,13 @@ int main()
     scanf("%d", &limite);
 
     LIST lista = {NULL, NULL};
-    struct STRNUM *ptr = NULL, *todestro = NULL;
+    struct STRNUM *ptr = NULL, *todestroy = NULL;
 
     //Establecer 2 como el primer número primo
-    lista.first = malloc(sizeof(struct STRNUM));
-    lista.first->number = 2;
-    lista.last->next = NULL;
+    insert(&lista, 2);
 
     //Ciclo que revisa todo el ciclo
-    for (int i = 2; i < limite; i++)
+    for (int i = 2; i <= limite; i++)
     {
         //Hacer que ptr apunte al inicio de la lista
         ptr = lista.first;
@@ -38,40 +36,50 @@ int main()
         {
             if ((i != ptr->number) && (i % ptr->number == 0))
             {
-                ptr = ptr->next;
                 is_prime = 0;
                 break;
             }
+            ptr = ptr->next;
         }
         
         if (is_prime && i > 2)
         {
-            printf("%d es primo\n", i);
+            
             SIZE++;
             insert(&lista, i);
         }
         
     }
+
+    printf("Numeros primos: \n");
+    ptr = lista.first;
+    for (int i = 0; i < SIZE; i++)
+    {
+        printf("%d ", ptr->number);
+        ptr = ptr->next;
+    }
+
+    ptr=lista.first;
+	while(ptr!=NULL)
+	{
+		todestroy = ptr;
+		ptr = ptr->next;
+		free(todestroy);
+	}
+    
     
 }
 
 void insert(LIST *lista, int prime)
 {
-	// Crear el nodo
 	struct STRNUM *new = malloc(sizeof(struct STRNUM));
-
-	// Poner los valores en la estructura
 	new->number = prime;
 	new->next = NULL;
 
-	// Si first apunta a NULL es que la lista está vacía
-	// y hay que poner el nodo como el primero de la lista
 	if(lista->first==NULL)
 		lista->first = new;
 	else
-		lista->last->next = new; // Si no, hay que ponerlo después
-							 // de last
+		lista->last->next = new; 
 
-	lista->last = new;	// last debe apuntar al nodo que acabamos
-					// de poner, que es el último
+	lista->last = new;	
 }
