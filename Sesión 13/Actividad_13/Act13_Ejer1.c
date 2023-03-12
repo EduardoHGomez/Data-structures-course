@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 struct STRNUM{
     int number;
@@ -14,9 +15,13 @@ void insert(LIST *lista, int prime);
 
 int main()
 {
+    
     int limite, is_prime, SIZE = 1;
     printf("Ingrese un numero limite: ");
     scanf("%d", &limite);
+
+    
+    clock_t begin = clock();
 
     LIST lista = {NULL, NULL};
     struct STRNUM *ptr = NULL, *todestroy = NULL;
@@ -67,7 +72,9 @@ int main()
 		free(todestroy);
 	}
     
-    
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("\nTiempo de ejecucion %f\n", time_spent);
 }
 
 void insert(LIST *lista, int prime)
