@@ -16,7 +16,7 @@ void insert(LIST *lista, int prime);
 int main()
 {
     
-    int limite, is_prime, SIZE = 1;
+    unsigned int limite, is_prime, SIZE = 1;
     printf("Ingrese un numero limite: ");
     scanf("%d", &limite);
 
@@ -56,13 +56,15 @@ int main()
         
     }
 
-    printf("Numeros primos: \n");
+    //printf("Numeros primos: \n");
     ptr = lista.first;
-    for (int i = 0; i < SIZE; i++)
+/**
+ *     for (int i = 0; i < SIZE; i++)
     {
-        printf("%d ", ptr->number);
+        //printf("%d ", ptr->number);
         ptr = ptr->next;
     }
+*/
 
     ptr=lista.first;
 	while(ptr!=NULL)

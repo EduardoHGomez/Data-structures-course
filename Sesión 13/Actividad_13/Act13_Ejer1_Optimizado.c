@@ -50,10 +50,12 @@ int main(){
     }
 
     ptr = first;
-    while (ptr != NULL) {
+    /**
+     * while (ptr != NULL) {
         printf("%d\n", ptr->num);
         ptr = ptr->next;
     }
+    */
 
     ptr = first;
     while (ptr != NULL) {
