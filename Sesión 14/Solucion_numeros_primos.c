@@ -1,63 +1,80 @@
+/*
+ * listaprimos.c
+ *
+ *  Created on: 13 mar 2023
+ *      Author: jluis
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <time.h>
 
-#define MAX 20
+#define MAX 1000
 
 struct STRNUM {
-    int num;
-    struct STRNUM *next;
+	int num;
+	struct STRNUM *next;
 };
 
 int main()
 {
-    struct STRNUM *first = NULL, *last = NULL, *ptr = NULL, *destr = NULL;
-    int limite;
+	struct STRNUM *first=NULL,*last=NULL,*ptr=NULL, *destr=NULL;
+	int i;
+	int limite;
+	int cont = 0;
+	clock_t inicio,fin;
+	float tiempo;
 
-    for (int i = 2; i < MAX; i++)
-    {
-        if (first == NULL)
-        {
-            first = malloc(sizeof(struct STRNUM));
-            first->num = i;
-            first->next = NULL;
-            last = first;
-        }
-        else
-        {
-            limite = sqrt(i);
-            ptr = first;
-            while(ptr != NULL && i % ptr->num != 0 && ptr->num <= limite)
-                ptr = ptr->next;
+	inicio = clock();
 
-            if (ptr == NULL)
-            { //No hay un divisor en la lista
-                ptr = malloc(sizeof(struct STRNUM));
-                ptr->num = i;
-                ptr->next = NULL;
+	for(i=2;i<=MAX;i++)
+	{
+		if(first==NULL)
+		{
+			first = malloc(sizeof(struct STRNUM));
+			first->num = i;
+			first->next = NULL;
+			last = first;
+			cont++;
+		}
+		else
+		{
+			limite = sqrt(i);
+			ptr = first;
+			while(ptr!=NULL && ptr->num<=limite && i % ptr->num != 0)
+				ptr = ptr->next;
 
-                last->next = ptr;
-                last = ptr;
-            }
-        }
-    }
+			if(ptr==NULL || ptr->num>limite)	// No hay un divisor en la lista
+			{
+				ptr = malloc(sizeof(struct STRNUM));
+				ptr->num = i;
+				ptr->next = NULL;
 
-    ptr = first;
-    while (ptr != NULL)
-    {
-        printf("%d\n", ptr->num);
-        ptr = ptr->next;
-    }
-    
-    //Destruir la lista
-    ptr = first;
-    while (ptr != NULL)
-    {
-        destr = ptr;
-        ptr = ptr->next;
-        free(destr);
-    }
-    
-    
+				last->next = ptr;
+				last = ptr;
+				cont++;
+			}
+		}
+	}
 
+	fin = clock();
+	tiempo = (fin-inicio) / 1000.0;
+
+	ptr = first;
+	while(ptr!=NULL)
+	{
+		printf("%d\n",ptr->num);
+		ptr = ptr->next;
+	}
+
+	printf("\nPrimos encontrados = %d\n",cont);
+	printf("\nTiempo = %5.2f\n",tiempo);
+	// Destruir la lista
+	ptr = first;
+	while(ptr!=NULL)
+	{
+		destr = ptr;
+		ptr = ptr->next;
+		free(destr);
+	}
 }
