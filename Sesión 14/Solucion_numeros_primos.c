@@ -11,14 +11,14 @@
 
 #define MAX 1000
 
-struct STRNUM {
+typedef struct STRNUM {
 	int num;
 	struct STRNUM *next;
-};
+} STRNUM;
 
 int main()
 {
-	struct STRNUM *first=NULL,*last=NULL,*ptr=NULL, *destr=NULL;
+	STRNUM *first=NULL,*last=NULL,*ptr=NULL, *destr=NULL;
 	int i;
 	int limite;
 	int cont = 0;
