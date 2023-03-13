@@ -25,27 +25,29 @@ int main()
 {
     srand(time(NULL));
 
-    LIST l = LISTINIT;
+    LIST l = LISTINIT; // Establece first y last como NULL
     int n;
 
     for(int i = 0; i<LIMIT; i++)
     {
         n = rand() % LIMIT;
-        printf("%d\n", n);
+        printf("i: %d Numero aleatorio: %d\n", i, n);
 
-        if(!found(l,n))
-            insert(&l,n);
+        insert(&l,n);
 
         
     }
+    
 
+    printf("Lista almacenada: \n");
     display(l);
-    destroy(l);
+    
 }
 
 void insert(LIST *l, int n)
 {
-    if (l->first == NULL) // Si es el primo
+    
+    if (l->first == NULL) // Si es el primero
     {
         l->first = malloc(sizeof(struct STRNODE));
         l->first->num = n;
@@ -53,15 +55,17 @@ void insert(LIST *l, int n)
     }
     else
     {
-        struct STRNODE *ptr = NULL;
-        ptr = l->first;
+        struct STRNODE *ptr = l->first;
 
         while (ptr != NULL)
         {
             ptr = ptr->next;
         }
 
+        ptr = malloc(sizeof(struct STRNODE));
         ptr->num = n;
+        ptr->next = NULL;
+        l->last = ptr;
         
     }
 }
