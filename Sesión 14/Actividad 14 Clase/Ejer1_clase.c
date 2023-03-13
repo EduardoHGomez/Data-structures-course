@@ -35,9 +35,7 @@ int main()
     {
         n = rand() % LIMIT;
         printf("i: %d Numero aleatorio: %d\n", i, n);
-
         insert(&l,n);
-
         
     }
     
@@ -53,16 +51,12 @@ void insert(LIST *l, int n)
     new->num = n;
     new->next = NULL;
 
-    if(l->first == NULL)
-    {
-        l->first = new;
-    }
-    else
-    {
-        l->last->next = new;
-    }
+	if(l->first==NULL)
+		l->first = new;
+	else
+		l->last->next = new; 
 
-    l->last = l->last->next;
+	l->last = new;	
     
 
 
