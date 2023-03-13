@@ -69,4 +69,37 @@ int found(LIST list,int num)
 {
     struct STRNODE *ptr = list.first;
 
+    while (ptr != NULL)
+    {
+        if (ptr->num == num)
+        {
+            return 1;
+        }
+        
+        ptr = ptr->next;
+    }
+
+    return 0;
+}
+
+void display(LIST list)
+{
+    struct STRNODE *ptr = list.first;
+    while (ptr != NULL)
+    {
+        printf("%d\n", ptr->num);
+        ptr = ptr->next;
+    }
+    
+}
+
+void destroy(LIST list)
+{
+    struct STRNODE *ptr = list.first;
+    while (ptr != NULL)
+    {
+        free(ptr);
+        ptr = ptr->next;
+    }
+    
 }
