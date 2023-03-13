@@ -12,6 +12,7 @@ struct STRNUM {
 int main()
 {
     struct STRNUM *first = NULL, *last = NULL, *ptr = NULL, *destr = NULL;
+    int limite;
 
     for (int i = 2; i < MAX; i++)
     {
@@ -24,8 +25,9 @@ int main()
         }
         else
         {
+            limite = sqrt(i);
             ptr = first;
-            while(ptr != NULL && i % ptr->num != 0)
+            while(ptr != NULL && i % ptr->num != 0 && ptr->num <= limite)
                 ptr = ptr->next;
 
             if (ptr == NULL)
@@ -53,6 +55,7 @@ int main()
     {
         destr = ptr;
         ptr = ptr->next;
+        free(destr);
     }
     
     
