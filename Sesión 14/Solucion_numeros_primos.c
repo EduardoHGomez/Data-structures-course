@@ -11,5 +11,34 @@ struct STRNUM {
 
 int main()
 {
-    int 
+    struct STRNUM *first = NULL, *last = NULL, *ptr = NULL;
+
+    for (int i = 0; i < MAX; i++)
+    {
+        if (first == NULL)
+        {
+            first = malloc(sizeof(struct STRNUM));
+            first->num = i;
+            first->next = NULL;
+            last = first;
+        }
+        else
+        {
+            ptr = first;
+            while(ptr != NULL && i % ptr->num != 0)
+                ptr = ptr->next;
+
+            if (ptr == NULL)
+            { //No hay un divisor en la lista
+                ptr = malloc(sizeof(struct STRNUM));
+                ptr->num = i;
+                ptr->next = NULL;
+
+                last->next = ptr;
+                last = ptr;
+            }
+        }
+    }
+    
+
 }
