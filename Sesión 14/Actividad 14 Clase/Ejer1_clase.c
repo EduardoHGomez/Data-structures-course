@@ -28,9 +28,10 @@ int main()
     LIST l = LISTINIT;
     int n;
 
-    for(int i = 0;i<LIMIT;i++)
+    for(int i = 0; i<LIMIT; i++)
     {
         n = rand() % LIMIT;
+        printf("%d\n", n);
 
         if(!found(l,n))
             insert(&l,n);
