@@ -11,9 +11,9 @@ struct STRNUM {
 
 int main()
 {
-    struct STRNUM *first = NULL, *last = NULL, *ptr = NULL;
+    struct STRNUM *first = NULL, *last = NULL, *ptr = NULL, *destr = NULL;
 
-    for (int i = 0; i < MAX; i++)
+    for (int i = 2; i < MAX; i++)
     {
         if (first == NULL)
         {
@@ -39,6 +39,22 @@ int main()
             }
         }
     }
+
+    ptr = first;
+    while (ptr != NULL)
+    {
+        printf("%d\n", ptr->num);
+        ptr = ptr->next;
+    }
+    
+    //Destruir la lista
+    ptr = first;
+    while (ptr != NULL)
+    {
+        destr = ptr;
+        ptr = ptr->next;
+    }
+    
     
 
 }
