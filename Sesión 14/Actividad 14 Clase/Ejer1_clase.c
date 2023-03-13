@@ -1,7 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-
+/**
+ * Usar la dirección: Cambiar el contenido
+ * Enviar el apuntador: Extraer la información
+*/
 #define LIMIT 20
 
 struct STRNODE {
@@ -47,7 +50,22 @@ int main()
 void insert(LIST *l, int n)
 {
     struct STRNODE *new = malloc(sizeof(struct STRNODE));
+    new->num = n;
+    new->next = NULL;
+
+    if(l->first == NULL)
+    {
+        l->first = new;
+    }
+    else
+    {
+        l->last->next = new;
+    }
+
+    l->last = l->last->next;
     
+
+
 }
 
 int found(LIST list,int num)
