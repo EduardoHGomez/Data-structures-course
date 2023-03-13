@@ -46,28 +46,8 @@ int main()
 
 void insert(LIST *l, int n)
 {
+    struct STRNODE *new = malloc(sizeof(struct STRNODE));
     
-    if (l->first == NULL) // Si es el primero
-    {
-        l->first = malloc(sizeof(struct STRNODE));
-        l->first->num = n;
-        l->first->next = NULL;
-    }
-    else
-    {
-        struct STRNODE *ptr = l->first;
-
-        while (ptr != NULL)
-        {
-            ptr = ptr->next;
-        }
-
-        ptr = malloc(sizeof(struct STRNODE));
-        ptr->num = n;
-        ptr->next = NULL;
-        l->last = ptr;
-        
-    }
 }
 
 int found(LIST list,int num)
@@ -89,12 +69,14 @@ int found(LIST list,int num)
 
 void display(LIST list)
 {
+    
     struct STRNODE *ptr = list.first;
     while (ptr != NULL)
     {
         printf("%d\n", ptr->num);
         ptr = ptr->next;
     }
+    printf("%p", ptr);
     
 }
 
