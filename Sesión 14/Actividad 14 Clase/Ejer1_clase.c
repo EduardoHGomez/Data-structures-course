@@ -51,7 +51,10 @@ void insert(LIST *l, int n)
     else
     {   
         struct STRNODE *ptr = l->first;
-
+        while (ptr != NULL)
+        {
+            ptr = ptr->next;
+        }
         
 
         l->last->next = new;
@@ -61,4 +64,22 @@ void insert(LIST *l, int n)
 
 }
 
+int found(LIST list,int num)
+{
+    struct STRNODE *ptr = list.first;
 
+    while (ptr != NULL && ptr->num != num)
+    {
+        
+        ptr = ptr->next;
+    }
+
+    if (ptr == NULL)
+    {
+        return 0;
+    }
+    else
+    {
+        return 1;
+    }
+}
