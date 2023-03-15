@@ -31,37 +31,37 @@ int main()
     LIST l = LISTINIT; // Establece first y last como NULL
     int n;
 
-    printf("%p %p\n", l.first, l.last);
-    insert(&l, 4);
-    insert(&l, 5);
+    for (int i = 0; i < LIMIT; i++)
+    {
+        insert(&l, i);
+    }
     
-    printf("%d %d", l.first->num, l.last->num);
+    struct STRNODE *ptr = l.first;
+    while (ptr != NULL)
+    {
+        printf("%d ", ptr->num);
+        ptr = ptr->next;
+    }
+    
+    
+    
+    
 }
 
 void insert(LIST *l, int n)
 {
-    struct STRNODE *new = malloc(sizeof(struct STRNODE));
-    new->num = n;
+	struct STRNODE *new = malloc(sizeof(struct STRNODE));
 
-    if (l->first == NULL)
-    {
-        l->first = new;
-        l->first->num = n;
-    }
-    else
-    {   
-        struct STRNODE *ptr = l->first;
-        while (ptr != NULL)
-        {
-            ptr = ptr->next;
-        }
-        
+	new->num = n;
+	new->next = NULL;
 
-        l->last->next = new;
-    }
-    l->last = new;
-    	
+	if(l->first==NULL)
+		l->first = new;
+	else
+		l->last->next = new; 
 
+	l->last = new;
+    
 }
 
 int found(LIST list,int num)
