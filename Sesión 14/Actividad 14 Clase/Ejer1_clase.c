@@ -51,10 +51,7 @@ void insert(LIST *l, int n)
     else
     {   
         struct STRNODE *ptr = l->first;
-        while (ptr != NULL)
-        {
-            ptr = ptr->next;
-        }
+
         
 
         l->last->next = new;
