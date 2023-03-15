@@ -31,74 +31,37 @@ int main()
     LIST l = LISTINIT; // Establece first y last como NULL
     int n;
 
-    for(int i = 0; i<LIMIT; i++)
-    {
-        n = rand() % LIMIT;
-        printf("i: %d Numero aleatorio: %d\n", i, n);
-        insert(&l,n);
-        
-    }
+    printf("%p %p\n", l.first, l.last);
+    insert(&l, 4);
+    insert(&l, 5);
     
-
-    printf("Lista almacenada: \n");
-    display(l);
-    
+    printf("%d %d", l.first->num, l.last->num);
 }
 
 void insert(LIST *l, int n)
 {
     struct STRNODE *new = malloc(sizeof(struct STRNODE));
     new->num = n;
-    new->next = NULL;
 
-	if(l->first==NULL)
-		l->first = new;
-	else
-		l->last->next = new; 
-
-	l->last = new;	
-    
-
-
-}
-
-int found(LIST list,int num)
-{
-    struct STRNODE *ptr = list.first;
-
-    while (ptr != NULL)
+    if (l->first == NULL)
     {
-        if (ptr->num == num)
+        l->first = new;
+        l->first->num = n;
+    }
+    else
+    {   
+        struct STRNODE *ptr = l->first;
+        while (ptr != NULL)
         {
-            return 1;
+            ptr = ptr->next;
         }
         
-        ptr = ptr->next;
-    }
 
-    return 0;
+        l->last->next = new;
+    }
+    l->last = new;
+    	
+
 }
 
-void display(LIST list)
-{
-    
-    struct STRNODE *ptr = list.first;
-    while (ptr != NULL)
-    {
-        printf("%d\n", ptr->num);
-        ptr = ptr->next;
-    }
-    printf("%p", ptr);
-    
-}
 
-void destroy(LIST list)
-{
-    struct STRNODE *ptr = list.first;
-    while (ptr != NULL)
-    {
-        free(ptr);
-        ptr = ptr->next;
-    }
-    
-}
