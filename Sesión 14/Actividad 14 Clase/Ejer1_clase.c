@@ -21,9 +21,6 @@ typedef struct {
 //-----------Funciones----------
 void insert(LIST *list, int i);
 
-
-
-
 int main()
 {
     srand(time(NULL));
