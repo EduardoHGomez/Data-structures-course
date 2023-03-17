@@ -19,12 +19,13 @@ void insert(node **list, int i);
 int main()
 {
     srand(time(NULL));
-    node *list = NULL;
+    node *list = 3;
 
     for (int i = 0; i < 10; i++)
     {
         insert(&list, i);
     }
+    printf("Direccion al salir: %p\n", list);
 
     node *ptr = list;
     while (ptr != NULL)
@@ -32,25 +33,18 @@ int main()
         printf("%d ", ptr->num);
         ptr = ptr->next;
     }
+
+    
     
 
 }
 
 void insert(node **list, int i)
 {
+
+    printf("Direccion en funcion: %p\n", *list);
     node *n = malloc(sizeof(node));
     n->num = i;
     n->next = NULL;
-    
-    if (*list == NULL)
-    {
-        n->next = NULL;
-    }
-    else
-    {
-        n->next = *list;
-    }
-    
-    *list = n;
 
 }
