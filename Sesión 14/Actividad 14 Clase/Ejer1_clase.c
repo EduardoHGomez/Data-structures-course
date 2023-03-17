@@ -21,16 +21,13 @@ typedef struct {
 
 int main()
 {
-    LIST l = LISTINIT;
-    int i,n;
-
     srand(time(NULL));
+    LIST list = LISTINIT;
 
-    for(i=0;i<LIMIT;i++)
+    for(int i = 0; i < LIMIT; i++)
     {
-        n = rand() % LIMIT;
-        if(!found(l,n))
-            insert(&l,n);
+        int n = rand() % LIMIT;
+        insert(&list, i);
     }
 
 }
