@@ -37,7 +37,7 @@ int main()
 
 	inicio =clock();
 	do {
-		printf("Dame un número (0 para terminar) :");
+		printf("Dame un numero (0 para terminar): ");
 		scanf("%d",&num);
 		if(num!=0)
 		{
