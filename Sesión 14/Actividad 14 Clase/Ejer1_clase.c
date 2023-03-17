@@ -14,12 +14,43 @@ typedef struct STRNODE {
 
 #define LISTINIT {NULL,NULL}
 //-----------Funciones----------
+void insert(node **list, int i);
 
 int main()
 {
     srand(time(NULL));
     node *list = NULL;
 
+    for (int i = 0; i < 10; i++)
+    {
+        insert(&list, i);
+    }
+
+    node *ptr = list;
+    while (ptr != NULL)
+    {
+        printf("%d ", ptr->num);
+        ptr = ptr->next;
+    }
     
+
+}
+
+void insert(node **list, int i)
+{
+    node *n = malloc(sizeof(node));
+    n->num = i;
+    n->next = NULL;
+    
+    if (*list == NULL)
+    {
+        n->next = NULL;
+    }
+    else
+    {
+        n->next = *list;
+    }
+    
+    *list = n;
 
 }
