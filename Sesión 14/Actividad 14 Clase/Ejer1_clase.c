@@ -5,46 +5,59 @@
  * Usar la dirección: Cambiar el contenido
  * Enviar el apuntador: Extraer la información
 */
-#define LIMIT 10
+#define LIMIT 20
 
 typedef struct STRNODE {
     int num;
     struct STRNODE *next;
 } node;
 
-#define LISTINIT {NULL,NULL}
+typedef struct {
+    struct STRNODE *first;
+    struct STRNODE *last;
+} LIST;
+
+#define LISTINIT {NULL, NULL}
 //-----------Funciones----------
-void insert(node **list, int i);
+void insert(LIST *list, int i);
 
 int main()
 {
     srand(time(NULL));
-    node *list = 3;
+    LIST list = {NULL,NULL};
+    int n;
 
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < LIMIT; i++)
     {
-        insert(&list, i);
+        n = rand() % LIMIT;
+        insert(&list, n);
     }
-    printf("Direccion al salir: %p\n", list);
-
-    node *ptr = list;
+    
+    node *ptr = list.first;
     while (ptr != NULL)
     {
         printf("%d ", ptr->num);
         ptr = ptr->next;
     }
+    
 
-    
-    
 
 }
 
-void insert(node **list, int i)
+void insert(LIST *list, int i)
 {
-
-    printf("Direccion en funcion: %p\n", *list);
     node *n = malloc(sizeof(node));
     n->num = i;
     n->next = NULL;
 
+    if (list->first == NULL)
+    {
+        list->first = n;
+    }
+    else
+    {
+        list->last->next = n;
+    }
+    list->last = n;
+    
 }
