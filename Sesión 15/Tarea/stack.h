@@ -27,6 +27,8 @@ void stack_push(STACK s,TYPE e);
 BOOL stack_empty(STACK s);
 TYPE stack_pop(STACK s);
 void stack_destroy(STACK s);
+TYPE stack_peek(STACK s);
+
 
 
 #endif /* STACK_H_ */

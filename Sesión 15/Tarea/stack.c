@@ -6,6 +6,7 @@
  */
 #include "stack.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 STACK stack_create()
 {
@@ -54,4 +55,11 @@ void stack_destroy(STACK s)
 	while(!stack_empty(s))
 		stack_pop(s);
 	free(s);
+}
+
+TYPE stack_peek(STACK s)
+{
+	TYPE elem = NULL;
+	elem = s->top->elem;	
+	return elem;
 }
