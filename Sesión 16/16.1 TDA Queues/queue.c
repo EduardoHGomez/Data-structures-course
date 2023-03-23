@@ -63,7 +63,10 @@ TYPE queue_poll(QUEUE q)
 
 TYPE queue_peek(QUEUE q)
 {
-	return q->front->elem;
+	if (q->front == NULL)
+      return 0;
+  	else
+	    return q->front->elem;
 }
 
 void queue_destroy(QUEUE q)

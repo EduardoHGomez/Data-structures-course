@@ -17,11 +17,12 @@ int main()
 
 	for(i=0;i<7;i++)
 		queue_offer(q1,int_create(i));
-
+		
 	while(!queue_empty(q1))
 	{
 		num = queue_poll(q1);
-		printf("%d\n",*num);
+		printf("%d\n", *num);
+
 	}
 
 	queue_destroy(q1);
