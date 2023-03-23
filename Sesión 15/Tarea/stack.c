@@ -21,8 +21,8 @@ STACK stack_create()
 void stack_push(STACK s,TYPE e)
 {
 	struct STR_STACK_NODE *new = malloc(sizeof(struct STR_STACK_NODE));
-
 	new->elem = e;
+	
 	new->prev = s->top;
 	s->top = new;
 	s->size = s->size + 1;
