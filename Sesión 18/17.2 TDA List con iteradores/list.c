@@ -74,6 +74,7 @@ void list_destroy(LIST l)
 		ptr = ptr->next;
 		free(toremove);
 	}
+	free(l->postlast);
 	free(l);
 }
 
@@ -87,10 +88,11 @@ BOOL list_has_prior(ITERATOR i)
 	return(i->prior!=NULL);
 }
 
-ITERATOR list_begin(LIST l);
+ITERATOR list_begin(LIST l)
 {
 	return(l->prefirst);
 }
+
 ITERATOR list_end(LIST l)
 {
 	return(l->postlast);
