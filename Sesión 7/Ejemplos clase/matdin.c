@@ -6,7 +6,6 @@
  */
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 
 #define ROWS 3
 #define COLS 4
@@ -15,7 +14,6 @@ void printmat(int **m,int rows,int cols);
 
 int main()
 {
-	srand(time(NULL));
 	int **mat;
 	int ren,col;
 
@@ -28,12 +26,7 @@ int main()
 	// Inicializar los valores de la matriz
 	for(ren=0;ren<ROWS;ren++)
 		for(col=0;col<COLS;col++)
-			mat[ren][col] = (rand() % 10); // 10*(ren+1)+col+1
-
-	//LIBERAR LA MEMORIA UTIILIZADA POR MAT
-	for (int i = 0; i < ROWS; i++)
-		free(mat[i]);
-	free(mat);
+			mat[ren][col] = 10*(ren+1)+col+1;
 
 	printmat(mat,ROWS,COLS);
 }
