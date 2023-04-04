@@ -78,6 +78,9 @@ void list_destroy(LIST l)
 	free(l);
 }
 
+
+
+
 BOOL list_has_next(ITERATOR i)
 {
 	return(i->next!=NULL);

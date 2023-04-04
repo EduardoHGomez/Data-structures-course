@@ -33,6 +33,7 @@ BOOL list_has_prior(ITERATOR i);
 ITERATOR list_begin(LIST l);
 ITERATOR list_end(LIST l);
 ITERATOR list_next(ITERATOR i); 
-ITERATOR list_prior(ITERATOR i); 
+ITERATOR list_prior(ITERATOR i);
+void list_remove(ITERATOR i, LIST l); 
 
 #endif /* LIST_H_ */

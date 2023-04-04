@@ -17,8 +17,6 @@ int main()
 	for(i=0;i<10;i++)
 		list_add(l1,int_create(i));
 
-	
-
 	printf("Recorriendo la lista hacia adelante\n");
 	ite = list_begin(l1);
 	while(list_has_next(ite))

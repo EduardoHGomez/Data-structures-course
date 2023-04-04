@@ -5,6 +5,7 @@
  *      Author: jluis
  */
 #include "list.h"
+#include <stdio.h>
 
 LIST list_create()
 {
@@ -60,6 +61,34 @@ TYPE list_get(LIST l,int pos)
 		ptr = ptr->next;
 
 	return(ptr->elem);
+}
+
+//------TAREA---------
+void list_remove(ITERATOR i, LIST l)
+{
+	struct STR_LIST_NODE *toremove = i; // Apuntar a donde está i
+	
+	// Condición apunta al inicio
+	if (i->prior == NULL)
+	{	
+		l->first = i->next;
+		l->first->prior = NULL;
+		l->prefirst->next = l->first;
+	}
+	else if (i->next == NULL)
+	{
+		l->last = i->prior;
+		l->last->next = NULL;
+		l->postlast->prior = l->last;
+	}
+	else
+	{
+		i->prior->next = i->next;
+		i->next->prior = i->prior;
+	}
+
+	l->size--;
+	free(toremove);
 }
 
 void list_destroy(LIST l)

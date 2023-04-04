@@ -17,25 +17,47 @@ int main()
 	for(i=0;i<10;i++)
 		list_add(l1,int_create(i));
 
-	
-
 	printf("Recorriendo la lista hacia adelante\n");
 	ite = list_begin(l1);
 	while(list_has_next(ite))
 	{
 		ite = list_next(ite);
 		n = ite->elem;
-		printf("%d\n",*n);
+		printf("%d ",*n);
 	}
 
-	printf("Recorriendo la lista hacia atrás\n");
+	printf("\n\nRecorriendo la lista hacia atrás\n");
 	ite = list_end(l1);
 	while(list_has_prior(ite))
 	{
 		ite = list_prior(ite);
 		n = ite->elem;
-		printf("%d\n",*n);
+		printf("%d ",*n);
 	}
+
+	//----------Prueba eliminando el elemento 5-----------
+	int position_to_remove = 10;
+	printf("\n\nRemover elemento %d\n", position_to_remove);
+
+	//Remover la posición
+	ite = list_begin(l1);
+	for (int i = 0; i < position_to_remove; i++)
+	{
+		ite = list_next(ite);
+		list_remove(ite, l1);
+	}
+	
+	
+	//-------------Prueba volver a pasar la lista-----------
+	printf("\nPrueba pasando todos los elementos despues de remover\n");
+	ite = list_begin(l1);
+	while(list_has_next(ite))
+	{
+		ite = list_next(ite);
+		n = ite->elem;
+		printf("%d ",*n);
+	}
+
 
 
 	list_destroy(l1);
