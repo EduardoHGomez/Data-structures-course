@@ -8,9 +8,9 @@
 
 TYPE int_create(int i)
 {
-	int *new = malloc(sizeof(int));
-	*new = i;
-	return(new);
+	int *new = malloc(sizeof(int));	// Pedir memoria para un entero
+	*new = i;						// gaurdar el entero en memoria
+	return(new);					// Regresar la dirección del entero
 }
 
 TYPE float_create(float f)
@@ -49,3 +49,24 @@ TYPE string_create(STRING s)
 
 	return(new);
 }
+
+char char_val(TYPE *e)
+{
+	return(*((char *) e));
+}
+
+float float_val(TYPE *e)
+{
+	return(*((float *) e));
+}
+
+double double_val(TYPE *e)
+{
+	return(*((double *) e));
+}
+
+int int_val(TYPE *e)
+{
+	return(*((int *) e));
+}
+

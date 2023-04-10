@@ -19,6 +19,11 @@ TYPE double_create(int d);
 TYPE char_create(char c);
 TYPE string_create(STRING s);
 
+char char_val(TYPE *e);
+float float_val(TYPE *e);
+double double_val(TYPE *e);
+int int_val(TYPE *e);
+
 #define DATATYPES_H_
 
 
