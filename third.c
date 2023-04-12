@@ -2,7 +2,7 @@
 
 int maxSum(void)
 {
-    
+    int 
 }
 
 int main()
