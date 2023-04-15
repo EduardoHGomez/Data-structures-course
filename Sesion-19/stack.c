@@ -5,8 +5,6 @@
  *      Author: jluis
  */
 #include "stack.h"
-#include <stdlib.h>
-#include <stdio.h>
 
 STACK stack_create()
 {
@@ -21,8 +19,8 @@ STACK stack_create()
 void stack_push(STACK s,TYPE e)
 {
 	struct STR_STACK_NODE *new = malloc(sizeof(struct STR_STACK_NODE));
+
 	new->elem = e;
-	
 	new->prev = s->top;
 	s->top = new;
 	s->size = s->size + 1;
@@ -50,16 +48,17 @@ TYPE stack_pop(STACK s)
 	return elem;
 }
 
+TYPE stack_peek(STACK s)
+{
+	TYPE toreturn=NULL;
+	if(s->top!=NULL)
+		toreturn = s->top->elem;
+	return(toreturn);
+}
+
 void stack_destroy(STACK s)
 {
 	while(!stack_empty(s))
 		stack_pop(s);
 	free(s);
-}
-
-TYPE stack_peek(STACK s)
-{
-	TYPE elem = NULL;
-	elem = s->top->elem;	
-	return elem;
 }

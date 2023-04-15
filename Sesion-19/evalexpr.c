@@ -1,3 +1,9 @@
+/*
+ * evalexpr.c
+ *
+ *  Created on: 10 abr 2023
+ *      Author: jluis
+ */
 #include <stdio.h>
 #include <math.h>
 #include "stack.h"
@@ -22,21 +28,24 @@ int main()
 
 	while(*ptr!='\0')	// Mientras no lleguemos al final
 	{
-		if(isoperando(*ptr))
+		if(*ptr=='(')
+			stack_push(operadores,char_create(*ptr));
+
+		else if(isoperando(*ptr))
 			stack_push(operandos,float_create(*ptr-'0'));
 		else if (isoperador(*ptr))
 		{
 			while(!stack_empty(operadores) &&
-					precedencia(*ptr)<=precedencia(*((char *)stack_peek(operadores))))
+					precedencia(*ptr)<=precedencia(char_val(stack_peek(operadores))))
 					stack_operation(operandos,operadores);
 			stack_push(operadores,char_create(*ptr));
 		}
-        else if (*ptr == ')')
-        {
-            
-        }
-        
-
+		else if(*ptr==')')
+		{
+			while(char_val(stack_peek(operadores))!='(')
+				stack_operation(operandos,operadores);
+			stack_pop(operadores);
+		}
 		ptr++;
 	}
 
@@ -74,8 +83,8 @@ int precedencia(char op)
 
 void stack_operation(STACK operandos,STACK operadores)
 {
-	float op2 = *((float *)stack_pop(operandos));
-	float op1 = *((float *)stack_pop(operandos));
+	float op2 = float_val(stack_pop(operandos));
+	float op1 = float_val(stack_pop(operandos));
 	char operador = *((char *)stack_pop(operadores));
 	float result;
 
