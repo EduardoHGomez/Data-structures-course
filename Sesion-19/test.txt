@@ -2,5 +2,5 @@
 
 int main()
 {
-    FILE *f = fopen()
+    FILE *f = fopen()()}
 }
