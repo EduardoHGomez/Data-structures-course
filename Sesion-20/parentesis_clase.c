@@ -32,7 +32,7 @@ int main(void)
 
     for (int i = 0; i < s1->size; i++)
     {
-        c = stack_pop(s1);
+        c = char_val(stack_pop(s1));
         printf("%c ", c);
     }
     
