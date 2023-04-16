@@ -1,0 +1,46 @@
+main:
+    crear STACK de OPERANDOS
+    crear STACK de OPERADORES
+    String Expresion = expresion a evaluar apuntada por un apuntador
+    Float resultado 
+
+    Expresion = recibir la expresión aritmética
+
+    Mientras no termine la expresion:
+        Si letra == '(':
+            Acumular a OPERADORES '('
+
+        Else if letra == operando:
+            Acumular a OPERANDOS numero
+
+        Else if letra == OPERADOR:
+            Verificar que OPERADORES no esté vacío y la precedencia
+            sea menor o que esté al mismo nivel que los OPERADORES,
+            si se cumple esta condición entonces cada vez se realizará:
+
+                Remover el operador que está hasta el top de OPERADORES y
+                operar los dos números que están en el top
+            
+            El resultado se almacena el resultado en un nuevo nodo del stack OPERADORES
+        
+        Else if letra == ')':
+            Realizar las operaciones entre los elementos de 
+            OPERANDOS y OPERADORES mientras no se llegue a '('
+
+            Extrar el elemento que está hasta el top
+        
+        Recorrer letra (apuntador de la expresión)
+
+    Mientras el stack OPERADORES no esté vacío:
+        Realizar la operación entre cada dos elementos de OPERANDOS
+        para cada operación restante en el stack de OPERADORES
+        sucesivamente
+
+    resultado = Último y único elemento del stack OPERANDOS con un cast Float
+    Imprimir el resultado
+
+    
+
+            
+
+

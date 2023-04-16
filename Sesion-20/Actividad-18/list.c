@@ -1,9 +1,3 @@
-/*
- * list.c
- *
- *  Created on: 24 mar. 2023
- *      Author: jluis
- */
 #include "list.h"
 
 LIST list_create()
@@ -17,19 +11,30 @@ LIST list_create()
 
 void list_add(LIST l,TYPE e)
 {
-	struct STR_LIST_NODE *new = malloc(sizeof(struct STR_LIST_NODE));
-	new->elem = e;
-	new->prior = NULL;
-	new->next = NULL;
-
-	if(l->first == NULL)	// �La lista est� vac�a?
-		l->first = new;
-	else
-		l->last->next = new;
-
-	new->prior = l->last;
-	l->last = new;
+	l->last = list_insert(l->first, e);
+	
 	l->size++;
+}
+
+struct STR_LIST_NODE* list_insert(struct STR_LIST_NODE *head, TYPE e)
+{
+	// EXTRAIDO DE https://www.geeksforgeeks.org/recursive-insertion-and-traversal-linked-list/
+    // If linked list is empty, create a
+    // new node (Assuming newNode() allocates
+    // a new node with given data)
+    if (head == NULL)
+	{
+		printf("Here\n");
+		struct STR_LIST_NODE *new = malloc(sizeof(struct STR_LIST_NODE));
+		new->elem = e;
+        return new;
+	}
+ 
+    // If we have not reached end, keep traversing
+    // recursively.
+    else
+        head->next = list_insert(head->next, e);
+    return head;
 }
 
 int list_size(LIST l)

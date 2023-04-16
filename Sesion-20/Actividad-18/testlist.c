@@ -1,9 +1,3 @@
-/*
- * ejemplolista.c
- *
- *  Created on: 24 mar. 2023
- *      Author: jluis
- */
 #include <stdio.h>
 #include "list.h"
 
@@ -13,8 +7,9 @@ int main()
 	int *n;
 	int i;
 
-	for(i=0;i<10;i++)
+	for(i=0;i<6;i++){
 		list_add(l1,int_create(i));
+	}
 
 	for(i=0;i<list_size(l1);i++)
 	{
