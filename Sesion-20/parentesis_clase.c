@@ -28,46 +28,12 @@ int main(void)
             stack_push(s1, char_create(c));
         }
 
-        if (c == ')')
-        {
-            char *char_to_check;
-            char_to_check = stack_pop(s1);
-            if (*char_to_check != '(')
-            {
-                printf("Error\n");
-                return 1;
-            }
-            
-        }
-        if (c == ']')
-        {
-            char *char_to_check;
-            char_to_check = stack_pop(s1);
-            if (*char_to_check != '[')
-            {
-                printf("Error\n");
-                return 1;
-            }
-        }
-        
-        if (c == '}')
-        {
-            char *char_to_check;
-            char_to_check = stack_pop(s1);
-            //printf("to check: %d %d", *char_to_check, c);
-            char a = *char_to_check;
-            char b = c;
-
-
-            if (*char_to_check != '{')
-            {
-
-                printf("Error\n");
-                return 1;
-            }
-        }
-
-        
     }
-    printf("Good\n");
+
+    for (int i = 0; i < s1->size; i++)
+    {
+        c = stack_pop(s1);
+        printf("%c ", c);
+    }
+    
 }
