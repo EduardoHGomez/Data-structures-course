@@ -1,21 +1,19 @@
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
 int maxSum(void)
 {
-    
+
 }
 
 
 int main()
 {
-    int test_cases;
-    scanf("%d", test_cases);
-
-    int results[test_cases];
-
-    for (int i = 0; i < test_cases; i++)
-    {
-        results[i] = maxSum();
-    }
+    FILE *f = fopen("candy_collection_input.txt", "r");
+    int *buffer;
+    fread(buffer, sizeof(int*), 1, f);
+    printf("%d ", *buffer);
     
+    fclose(f);
 }
