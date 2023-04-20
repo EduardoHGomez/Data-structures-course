@@ -50,5 +50,11 @@ void print_color(TYPE data)
 int main()
 {
     SET s1 = set_create(comparador_enteros, print_entero);
-	set_add(s1, "ROJO");
+	set_add(s1,"ROJO");
+	set_add(s1,"NEGRO");
+	set_add(s1,"VERDE");
+	set_add(s1,"ROJO");
+	set_add(s1,"NEGRO");
+	set_add(s1,"VERDE");
+	set_add(s1,"AZUL");
 }
