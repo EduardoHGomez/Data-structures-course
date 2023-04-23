@@ -1,3 +1,9 @@
+/*
+ * set.c
+ *
+ *  Created on: 19 abr 2023
+ *      Author: jluis
+ */
 #include <stdlib.h>
 #include <stdio.h>
 #include "set.h"
@@ -15,10 +21,10 @@ int tree_insert(struct STRTNODE **root,TYPE e,COMPAREFUNC cf)
 		(*root)->right = NULL;
 		inserted = 1;
 	}
-	else if(cf(e,(*root)->elem)<0)
-		inserted = tree_insert(&(*root)->left,e,cf);
-	else if(cf(e,(*root)->elem)>0)
-		inserted = tree_insert(&(*root)->right,e,cf);
+	else if(cf(e,(*root)->elem) < 0)  // e < (*root)->elem
+		inserted = tree_insert(&(*root)->left, e, cf);
+	else if(cf(e,(*root)->elem) > 0)  // e > (*root)->elem
+		inserted = tree_insert(&(*root)->right, e, cf);
 
 	return inserted;
 }
@@ -53,7 +59,7 @@ SET set_create(COMPAREFUNC cf,PRINTFUNC pf)
 
 void set_add(SET set,TYPE e)
 {
-	if(tree_insert(&set->tree_root,e,set->cf))
+	if(tree_insert(&set->tree_root, e, set->cf))
 		set->size = set->size + 1;
 }
 
@@ -66,3 +72,12 @@ void set_print(SET set)
 {
 	tree_print(0,set->tree_root,set->pf);
 }
+
+// 2.- Desarrolla la función para determinar si un dato ya existe en el conjunto
+
+/**
+ * BOOL isInSet(struct STRTNODE *node, TYPE n)
+{
+	
+}
+*/

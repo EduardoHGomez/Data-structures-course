@@ -1,12 +1,8 @@
-/*
- * use_set.c
- *
- *  Created on: 19 abr 2023
- *      Author: jluis
- */
 #include <stdio.h>
 #include <string.h>
 #include "set.h"
+#include <time.h>
+#include <stdlib.h>
 
 int comparador_enteros(TYPE a,TYPE b);
 int color_code(char *color_name);
@@ -14,33 +10,32 @@ int comparador_colores(TYPE color1,TYPE color2);
 void print_entero(TYPE data);
 void print_color(TYPE data);
 
+/*EJERCICIO 1: Desarrollar las funciones para imprimir, destruir, y comparar */
+
 int main()
 {
-	SET s1 = set_create(comparador_colores,
-			print_color);
+	srand(time(NULL));
+	SET s1 = set_create(comparador_enteros, print_entero);
 
-
-	set_add(s1,string_create("ROJO"));
-	set_add(s1,string_create("NEGRO"));
-	set_add(s1,string_create("VERDE"));
-	set_add(s1,string_create("ROJO"));
-	set_add(s1,string_create("NEGRO"));
-	set_add(s1,string_create("VERDE"));
-	set_add(s1,string_create("AZUL"));
-
-
-	printf("Tamaño del conjunto %d\n",set_size(s1));
-
+	// Para el ejercicio básico se añadirán 20 números aleatorios
+	int random;
+	for (int i = 0; i < 20; i++)
+	{
+		random = rand() % 10;
+		set_add(s1, int_create(random));
+	}
+	
+	// Función para imprimir set
 	set_print(s1);
+
+	// Función para destruir
+
+	printf("Size: %d", s1->size);
+	set_delete(s1);
+	
 
 }
 
-/*
- * Esta función regresa
- * 	Un valor positivo si a es mayor que b
- * 	Un valor negativo si a es menor que b
- * 	0 si a y b son iguales
- */
 int comparador_enteros(TYPE a,TYPE b)
 {
 	int ia = *((int *) a);

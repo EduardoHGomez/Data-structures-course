@@ -1,4 +1,12 @@
+/*
+ * datatypes.c
+ *
+ *  Created on: 15 mar 2023
+ *      Author: jluis
+ */
 #include "datatypes.h"
+
+// 1.- Definir los tipos de datos para un conjunto y un nodo del árbol que formará parte del TDA Set.
 
 TYPE int_create(int i)
 {

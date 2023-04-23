@@ -20,7 +20,9 @@ void treeinsert(struct STRTNODE **root, int n)
     }
     else if (n < (*root) -> num)
     {
-        treeinsert(&(*root)->left, n);
+        treeinsert(&(*root)->left, n); // Se manda la dirección del root de la izquierda
+        // para que cuando entre de nuevo a la función recursiva detecta si es null
+        // o, de nuevo extrayendo con (*root)->num entonces revise la condición
     }
     /**
      * Cuando se manda como &(*root)->left, el argumento

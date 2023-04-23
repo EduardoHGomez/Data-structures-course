@@ -16,20 +16,14 @@ void print_color(TYPE data);
 
 int main()
 {
-	SET s1 = set_create(comparador_colores,
-			print_color);
+	SET s1 = set_create(comparador_enteros, print_entero);
 
+	set_add(s1,int_create(5));
+	set_add(s1,int_create(4));
+	set_add(s1,int_create(7));
+	set_add(s1,int_create(9));
 
-	set_add(s1,string_create("ROJO"));
-	set_add(s1,string_create("NEGRO"));
-	set_add(s1,string_create("VERDE"));
-	set_add(s1,string_create("ROJO"));
-	set_add(s1,string_create("NEGRO"));
-	set_add(s1,string_create("VERDE"));
-	set_add(s1,string_create("AZUL"));
-
-
-	printf("Tamaño del conjunto %d\n",set_size(s1));
+	printf("Tamano del conjunto %d\n",set_size(s1));
 
 	set_print(s1);
 
@@ -63,6 +57,13 @@ int color_code(char *color_name)
 	return retval;
 }
 
+
+/*
+ * La comparación de a con b se hace mediante la resta de a - b
+ * Si la resta te da como resultado un valor positivo, entonces a > b
+ * Si la resta te da como resultado un valor negativo, entonces a < b
+ * Si la resta te da como resultado 0, entonces son iguales
+ */
 int comparador_colores(TYPE color1,TYPE color2)
 {
 	return(color_code(color1) - color_code(color2));
@@ -79,3 +80,28 @@ void print_color(TYPE data)
 	printf("\"color\":\"%s\"",(char *) data);
 	printf("}\n");
 }
+
+
+// ----------------PROGRAMA ANTERIOR------------------
+/**
+ * int main()
+{
+	SET s1 = set_create(comparador_colores,
+			print_color);
+
+
+	set_add(s1,string_create("ROJO"));
+	set_add(s1,string_create("NEGRO"));
+	set_add(s1,string_create("VERDE"));
+	set_add(s1,string_create("ROJO"));
+	set_add(s1,string_create("NEGRO"));
+	set_add(s1,string_create("VERDE"));
+	set_add(s1,string_create("AZUL"));
+
+
+	printf("Tamano del conjunto %d\n",set_size(s1));
+
+	set_print(s1);
+
+}
+*/
