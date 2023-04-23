@@ -16,20 +16,14 @@ void print_color(TYPE data);
 
 int main()
 {
-	SET s1 = set_create(comparador_colores,
-			print_color);
+	SET s1 = set_create(comparador_enteros, print_entero);
 
+	set_add(s1,int_create(1));
+	set_add(s1,int_create(2));
+	set_add(s1,int_create(3));
+	set_add(s1,int_create(4));
 
-	set_add(s1,string_create("ROJO"));
-	set_add(s1,string_create("NEGRO"));
-	set_add(s1,string_create("VERDE"));
-	set_add(s1,string_create("ROJO"));
-	set_add(s1,string_create("NEGRO"));
-	set_add(s1,string_create("VERDE"));
-	set_add(s1,string_create("AZUL"));
-
-
-	printf("Tamaño del conjunto %d\n",set_size(s1));
+	printf("Tamano del conjunto %d\n",set_size(s1));
 
 	set_print(s1);
 
@@ -86,3 +80,28 @@ void print_color(TYPE data)
 	printf("\"color\":\"%s\"",(char *) data);
 	printf("}\n");
 }
+
+
+// ----------------PROGRAMA ANTERIOR------------------
+/**
+ * int main()
+{
+	SET s1 = set_create(comparador_colores,
+			print_color);
+
+
+	set_add(s1,string_create("ROJO"));
+	set_add(s1,string_create("NEGRO"));
+	set_add(s1,string_create("VERDE"));
+	set_add(s1,string_create("ROJO"));
+	set_add(s1,string_create("NEGRO"));
+	set_add(s1,string_create("VERDE"));
+	set_add(s1,string_create("AZUL"));
+
+
+	printf("Tamano del conjunto %d\n",set_size(s1));
+
+	set_print(s1);
+
+}
+*/

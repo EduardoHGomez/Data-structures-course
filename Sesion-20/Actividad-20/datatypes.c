@@ -6,6 +6,8 @@
  */
 #include "datatypes.h"
 
+// 1.- Definir los tipos de datos para un conjunto y un nodo del árbol que formará parte del TDA Set.
+
 TYPE int_create(int i)
 {
 	int *new = malloc(sizeof(int));	// Pedir memoria para un entero
