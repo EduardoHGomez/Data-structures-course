@@ -1,9 +1,3 @@
-/*
- * set.c
- *
- *  Created on: 19 abr 2023
- *      Author: jluis
- */
 #include <stdlib.h>
 #include <stdio.h>
 #include "set.h"
@@ -21,9 +15,9 @@ int tree_insert(struct STRTNODE **root,TYPE e,COMPAREFUNC cf)
 		(*root)->right = NULL;
 		inserted = 1;
 	}
-	else if(cf(e,(*root)->elem)<0)
+	else if(cf(e,(*root)->elem) < 0)
 		inserted = tree_insert(&(*root)->left,e,cf);
-	else if(cf(e,(*root)->elem)>0)
+	else if(cf(e,(*root)->elem) > 0)
 		inserted = tree_insert(&(*root)->right,e,cf);
 
 	return inserted;
@@ -45,6 +39,18 @@ void tree_print(int level,struct STRTNODE *root,PRINTFUNC pf)
 	}
 }
 
+void tree_delete(struct STRTNODE *root)
+{
+	int i;
+	if(root!=NULL)
+	{
+		tree_delete(root->left);
+		tree_delete(root->right);
+		
+		struct STRTNODE *toremove = root;
+		free(toremove);
+	}
+}
 
 SET set_create(COMPAREFUNC cf,PRINTFUNC pf)
 {
@@ -71,4 +77,9 @@ int set_size(SET set)
 void set_print(SET set)
 {
 	tree_print(0,set->tree_root,set->pf);
+}
+
+void set_delete(SET set)
+{
+	tree_delete(set->tree_root);
 }

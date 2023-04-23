@@ -1,10 +1,3 @@
-/*
- * set.h
- *
- *  Created on: 19 abr 2023
- *      Author: jluis
- */
-
 #ifndef SET_H_
 
 #include "datatypes.h"
@@ -29,9 +22,9 @@ void set_add(SET set,TYPE e);
 int set_size(SET set);
 void set_print(SET set);
 
+void tree_delete(struct STRTNODE *root);
+void set_delete(SET set);
 
 #define SET_H_
-
-
 
 #endif /* SET_H_ */
