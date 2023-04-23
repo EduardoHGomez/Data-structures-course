@@ -1,3 +1,9 @@
+/*
+ * datatypes.c
+ *
+ *  Created on: 15 mar 2023
+ *      Author: jluis
+ */
 #include "datatypes.h"
 
 TYPE int_create(int i)
@@ -63,3 +69,4 @@ int int_val(TYPE *e)
 {
 	return(*((int *) e));
 }
+

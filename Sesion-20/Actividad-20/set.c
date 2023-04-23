@@ -1,5 +1,14 @@
+/*
+ * set.c
+ *
+ *  Created on: 19 abr 2023
+ *      Author: jluis
+ */
+#include <stdlib.h>
 #include <stdio.h>
 #include "set.h"
+
+/* Funciones para el manejo de los árboles */
 
 int tree_insert(struct STRTNODE **root,TYPE e,COMPAREFUNC cf)
 {
@@ -12,13 +21,14 @@ int tree_insert(struct STRTNODE **root,TYPE e,COMPAREFUNC cf)
 		(*root)->right = NULL;
 		inserted = 1;
 	}
-	else if(cf(e,(*root)->elem) < 0)
+	else if(cf(e,(*root)->elem)<0)  // e < (*root)->elem
 		inserted = tree_insert(&(*root)->left,e,cf);
-	else if(cf(e,(*root)->elem) > 0)
+	else if(cf(e,(*root)->elem)>0)  // e > (*root)->elem
 		inserted = tree_insert(&(*root)->right,e,cf);
 
 	return inserted;
 }
+
 
 void tree_print(int level,struct STRTNODE *root,PRINTFUNC pf)
 {
@@ -34,6 +44,7 @@ void tree_print(int level,struct STRTNODE *root,PRINTFUNC pf)
 		tree_print(level+1,root->left,pf);
 	}
 }
+
 
 SET set_create(COMPAREFUNC cf,PRINTFUNC pf)
 {
