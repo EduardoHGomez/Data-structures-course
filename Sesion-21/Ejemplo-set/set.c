@@ -1,9 +1,3 @@
-/*
- * set.c
- *
- *  Created on: 19 abr 2023
- *      Author: jluis
- */
 #include <stdlib.h>
 #include <stdio.h>
 #include "set.h"

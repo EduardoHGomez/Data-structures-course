@@ -1,10 +1,3 @@
-/*
- * datatypes.h
- *
- *  Created on: 15 mar 2023
- *      Author: jluis
- */
-
 #ifndef DATATYPES_H_
 
 #include <stdlib.h>
