@@ -22,6 +22,11 @@ void treeinsert(struct STRTNODE **root, int n)
     {
         treeinsert(&(*root)->left, n);
     }
+    /**
+     * Cuando se manda como &(*root)->left, el argumento
+     * del nodo de la izquierda pasa a ser (*root) = malloc
+     * por lo que en realidad &(*root)->left apunta a malloc
+    */
     else if (n > (*root) -> num)
     {
         treeinsert(&(*root)->right, n);
@@ -42,22 +47,22 @@ void tree_inorder(struct STRTNODE *root)
 
 void tree_preorder(struct STRTNODE *root)
 {
-    if (root != NULL)
-    {
-        tree_preorder(root->right);
-        printf("%d ", root->num);
-        tree_preorder(root->left);
-    }   
+	if(root!=NULL)
+	{
+		printf("%d ",root->num);
+		tree_preorder(root->left);
+		tree_preorder(root->right);
+	}
 }
 
 void tree_postorder(struct STRTNODE *root)
 {
-    if(root!=NULL)
-    {
-        tree_postorder(root->left);
-        tree_postorder(root->right);
-        printf("%d\t",root->num);
-    }
+	if(root!=NULL)
+	{
+		tree_postorder(root->left);
+		tree_postorder(root->right);
+		printf("%d ",root->num);
+	}
 }
 
 void tree_print(int level,struct STRTNODE *root)
@@ -92,4 +97,7 @@ int main()
 
 	printf("\nRecorrido en preorden\n");
 	tree_preorder(root);
+
+    printf("\nRecorrido en postorden\n");
+	tree_postorder(root);
 }
