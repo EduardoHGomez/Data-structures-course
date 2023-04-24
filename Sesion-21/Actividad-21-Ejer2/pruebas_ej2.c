@@ -5,12 +5,12 @@
 #include <stdlib.h>
 
 int comparador_enteros(TYPE a,TYPE b);
-int color_code(char *color_name);
-int comparador_colores(TYPE color1,TYPE color2);
 void print_entero(TYPE data);
-void print_color(TYPE data);
 
-void int_to_roman(int num);
+STRING int_to_roman(int num);
+int roman_code(char *s);
+int comparador_romanos(TYPE a, TYPE b);
+void print_romano(TYPE data);
 
 /*EJERCICIO 1: Desarrollar las funciones para imprimir, destruir, y comparar */
 
@@ -18,26 +18,25 @@ int main()
 {
 	srand(time(NULL));
 	SET s1 = set_create(comparador_enteros, print_entero);
-	//SET s2 = set_create(comparador_enteros, print_romano);
+	SET s2 = set_create(comparador_romanos, print_romano);
 
 	int random;
 	STRING romano;
 	for (int i = 0; i < 10; i++)
 	{
-		random = rand() % 100;
+		random = rand() % (100 + 1 - 1) + 1;
 		set_add(s1, int_create(random));
-		printf("%d ", random);
-		int_to_roman(random);
-		printf("\n");
-		//set_add(s2, string_create(romano));
+		STRING romano = int_to_roman(random); // Primero creamos un STRING del número aleatorio
+		set_add(s2, string_create(romano)); // Se añade a s2 para que pase de STRING a TYPE
 	}
 	
 	set_print(s1);
+	set_print(s2);
 
 
 }
 
-void int_to_roman(int num)
+STRING int_to_roman(int num)
 {
     char *conversion = malloc(20);  // Allocate sufficient memory for the Roman numeral string
     int index = 0;
@@ -136,9 +135,47 @@ void int_to_roman(int num)
         }
     }
     
-    conversion[index] = '\0';  // Add null character at the end of the string
-    printf("%s", conversion);
-    free(conversion);  // Free dynamically allocated memory
+    conversion[index] = '\0';
+    return conversion;
+}
+
+int roman_code(char *romano) 
+{
+/**
+ * Creamos un hash map que tendrá 26 espacios de los cuales solo se usarán 7
+ * según la resta de conversión desde ascii será el número a 
+ * sumar o restar en el ciclo for
+*/
+
+    int hash[26];
+    hash['i' - 'a'] = 1;
+    hash['v' - 'a'] = 5;
+    hash['x' - 'a'] = 10;
+    hash['l' - 'a'] = 50;
+    hash['c' - 'a'] = 100;
+    hash['d' - 'a'] = 500;
+    hash['m' - 'a'] = 1000;
+
+    int resultado = 0;
+    for (int i = 0; i < strlen(romano); i++)
+    {
+        if (i + 1 < strlen(romano) && hash[romano[i]-'a'] < hash[romano[i+1]-'a'])
+        {
+            resultado -= hash[romano[i]-'a'];
+        }
+        else
+        {
+            resultado += hash[romano[i]-'a'];
+        }
+        
+    }
+    
+    return resultado;
+}
+
+int comparador_romanos(TYPE a, TYPE b)
+{
+	return (roman_code(a) - roman_code(b));
 }
 
 int comparador_enteros(TYPE a,TYPE b)
@@ -155,7 +192,6 @@ void print_entero(TYPE data)
 
 void print_romano(TYPE data)
 {
-	printf("{");
-	printf("\"Numero Romano\":\"%s\"",(char *) data);
-	printf("}\n");
+	printf("%s",(char *) data);
+	printf("\n");
 }
