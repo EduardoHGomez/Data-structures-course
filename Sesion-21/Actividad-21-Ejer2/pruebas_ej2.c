@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#include "set.h"
+#include "set_ejer2.h"
 #include <time.h>
 #include <stdlib.h>
 
@@ -11,6 +11,7 @@ STRING int_to_roman(int num);
 int roman_code(char *s);
 int comparador_romanos(TYPE a, TYPE b);
 void print_romano(TYPE data);
+int equivalente_entero(char letra);
 
 /*EJERCICIO 1: Desarrollar las funciones para imprimir, destruir, y comparar */
 
@@ -30,9 +31,9 @@ int main()
 		set_add(s2, string_create(romano)); // Se añade a s2 para que pase de STRING a TYPE
 	}
 	
-	set_print(s1);
-	set_print(s2);
 
+    set_delete(s1);
+    set_delete(s2);
 
 }
 
@@ -139,33 +140,56 @@ STRING int_to_roman(int num)
     return conversion;
 }
 
+int equivalente_entero(char letra)
+{
+    switch (letra)
+    {
+    case 'i':
+        return 1;
+        break;
+    
+    case 'v':
+        return 5;
+        break;
+    
+    case 'x':
+        return 10;
+        break;
+
+    case 'l':
+        return 50;
+        break;
+    
+    case 'c':
+        return 100;
+        break;
+
+    case 'd':
+        return 500;
+        break;
+    
+    case 'm':
+        return 1000;
+        break;
+    default:
+    break;
+    }
+}
+
+
 int roman_code(char *romano) 
 {
-/**
- * Creamos un hash map que tendrá 26 espacios de los cuales solo se usarán 7
- * según la resta de conversión desde ascii será el número a 
- * sumar o restar en el ciclo for
-*/
-
-    int hash[26];
-    hash['i' - 'a'] = 1;
-    hash['v' - 'a'] = 5;
-    hash['x' - 'a'] = 10;
-    hash['l' - 'a'] = 50;
-    hash['c' - 'a'] = 100;
-    hash['d' - 'a'] = 500;
-    hash['m' - 'a'] = 1000;
 
     int resultado = 0;
     for (int i = 0; i < strlen(romano); i++)
     {
-        if (i + 1 < strlen(romano) && hash[romano[i]-'a'] < hash[romano[i+1]-'a'])
+        if (i + 1 < strlen(romano) && (equivalente_entero(romano[i]) < equivalente_entero(romano[i+1])))
         {
-            resultado -= hash[romano[i]-'a'];
+            resultado -= equivalente_entero(romano[i]);
         }
         else
         {
-            resultado += hash[romano[i]-'a'];
+            resultado += equivalente_entero(romano[i]);
         }
         
     }

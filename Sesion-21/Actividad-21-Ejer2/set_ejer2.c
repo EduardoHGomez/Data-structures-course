@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "set.h"
+#include "set_ejer2.h"
 
 /* Funciones para el manejo de los árboles */
 
