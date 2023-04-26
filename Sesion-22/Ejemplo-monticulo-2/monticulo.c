@@ -18,10 +18,9 @@ typedef struct {
 #define right(n) (n*2+2)
 #define EMPTY -1
 
-
 void swap(int *a,int *b);
 void heap_init(HEAP *heap);
-void heap_offer(HEAP *heap,int num);
+void heap_offer(HEAP *heap, int num);
 int heap_poll(HEAP *heap);
 
 int main()
