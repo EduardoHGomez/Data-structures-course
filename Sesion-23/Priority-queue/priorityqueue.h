@@ -23,7 +23,7 @@ TYPE priorityqueue_poll(PRIORITYQUEUE pq);
 
 // Tarea
 TYPE priority_peek(PRIORITYQUEUE pq);
-int riorityqueue_size(PRIORITYQUEUE pq);
+int priority_size(PRIORITYQUEUE pq);
 BOOL priorityqueue_isempty(PRIORITYQUEUE pq);
 
 #endif /* PRIORITYQUEUE_H_ */

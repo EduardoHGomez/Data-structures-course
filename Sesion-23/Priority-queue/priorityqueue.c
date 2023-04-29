@@ -1,9 +1,4 @@
-/*
- * priorityqueue.c
- *
- *  Created on: 26 abr 2023
- *      Author: jluis
- */
+#include <stdio.h>
 #include "priorityqueue.h"
 
 void swap(TYPE *a,TYPE *b)
@@ -84,5 +79,21 @@ TYPE priorityqueue_poll(PRIORITYQUEUE pq)
 // Tarea
 TYPE priority_peek(PRIORITYQUEUE pq)
 {
+    return pq->arr[0];
+}
+
+int priority_size(PRIORITYQUEUE pq)
+{
+    return pq->size;
+}
+
+BOOL priorityqueue_isempty(PRIORITYQUEUE pq)
+{
+    if (priority_peek(pq) == NULL)
+    {
+        return 1;
+    }
+
+    return 0;
     
 }
