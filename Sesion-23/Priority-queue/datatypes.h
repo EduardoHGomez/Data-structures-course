@@ -1,4 +1,4 @@
-#ifndef DATATYPES_H_
+ifndef DATATYPES_H_
 
 #include <stdlib.h>
 
