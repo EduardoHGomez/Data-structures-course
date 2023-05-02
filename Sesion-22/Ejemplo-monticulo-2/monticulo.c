@@ -20,7 +20,6 @@ int heap_poll(HEAP *heap);
 
 int main()
 {
-
 	HEAP h1;
 	int arr[] = {22,13,15,17,8,26,29,5,14,19,2,7,20,13,29}; // Not working
 	int nums[] = {10,12,5,7,9,19,6,8,17,23,29,2,5};
@@ -56,11 +55,10 @@ void heap_offer(HEAP *heap,int num)
 {
 	int elem = heap->size;
 
-
 	heap->arr[elem] = num;
 	heap->size = heap->size + 1;
 
-	while(elem>0 && heap->arr[elem]<heap->arr[parent(elem)])
+	while(elem>0 && heap->arr[elem]< heap->arr[parent(elem)])
 	{
 		swap(&(heap->arr[elem]),&(heap->arr[parent(elem)]));
 		elem = parent(elem);
@@ -93,7 +91,7 @@ int heap_poll(HEAP *heap)
 				min = right(elem);
 
 			if(heap->arr[elem] > heap->arr[min])
-				swap(&heap->arr[elem], &heap->arr[min]);
+				swap(&heap->arr[elem], 	&heap->arr[min]);
 
 			elem = min;
 		}

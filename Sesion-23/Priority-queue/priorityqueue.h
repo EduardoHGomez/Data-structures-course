@@ -20,10 +20,8 @@ typedef struct STRPRIORITYQUEUE * PRIORITYQUEUE;
 PRIORITYQUEUE priorityqueue_create(int max_size,COMPAREFUNC cf,PRINTFUNC pf);
 void priorityqueue_offer(PRIORITYQUEUE pq,TYPE data);
 TYPE priorityqueue_poll(PRIORITYQUEUE pq);
-
-// Tarea
-TYPE priority_peek(PRIORITYQUEUE pq);
-int priority_size(PRIORITYQUEUE pq);
+TYPE priorityqueue_peek(PRIORITYQUEUE pq);
+int priorityqueue_size(PRIORITYQUEUE pq);
 BOOL priorityqueue_isempty(PRIORITYQUEUE pq);
 
 #endif /* PRIORITYQUEUE_H_ */

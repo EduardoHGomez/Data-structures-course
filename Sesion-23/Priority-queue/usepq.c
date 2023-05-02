@@ -19,19 +19,13 @@ int main()
 		i++;
 	}
 
-	printf("\nPeek: %d\n", int_val((priority_peek(pq1))));
 
-	printf("Size: %d\n", priority_size(pq1));
-
-	printf("Is empty: %d\n", priorityqueue_isempty(pq1));
-
-	for(i=0;i<13;i++)
+	while(!priorityqueue_isempty(pq1))
 	{
 		n = priorityqueue_poll(pq1);
 		printf("%d\t",*n);
 	}
-	printf("\n");
-	printf("Is empty: %d\n", priorityqueue_isempty(pq1));
+
 
 }
 
