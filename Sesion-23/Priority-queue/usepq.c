@@ -20,7 +20,7 @@ int main()
 	}
 
 
-	while(!priorityqueue_isempty(pq))
+	while(!priorityqueue_isempty(pq1))
 	{
 		n = priorityqueue_poll(pq1);
 		printf("%d\t",*n);
