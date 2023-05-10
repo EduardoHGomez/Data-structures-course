@@ -1,9 +1,3 @@
-/*
- * hash.c
- *
- *  Created on: 3 may 2023
- *      Author: jluis
- */
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
