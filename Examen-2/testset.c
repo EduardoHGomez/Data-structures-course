@@ -1,9 +1,3 @@
-/*
- * use_set.c
- *
- *  Created on: 28 abr 2023
- *      Author: jluis
- */
 #include <stdio.h>
 #include <string.h>
 #include "set.h"

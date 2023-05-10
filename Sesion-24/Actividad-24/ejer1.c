@@ -19,9 +19,30 @@ struct STRMAPLIST {
 
 struct STRMAPLIST table[M];
 
-void list_insert (int posicion, char *key, char *nombre)
+void hash_find(int posicion, char *key)
 {
+    // Crear la nueva estructura
+    struct STRMLNODE *tofind = table[posicion].first;
 
+    int indexFound = 0;
+    while (tofind != NULL)
+    {
+        if (strcmp(tofind->key, key) == 0)
+        {
+            printf("Llave: %s Valor: %s Posicion de la tabla: %d Posicion de la lista hash %d\n",
+            tofind->key, tofind->data, posicion, indexFound);
+            return;
+        }
+        indexFound++;
+        tofind = tofind->next;
+    }
+    
+    printf("Llave no encontrada\n");
+    
+}
+
+void hash_insert (int posicion, char *key, char *nombre)
+{
     // Crear la nueva estructura
     struct STRMLNODE *toinsert = malloc(sizeof(struct STRMLNODE));
     toinsert->next = NULL;
@@ -34,15 +55,13 @@ void list_insert (int posicion, char *key, char *nombre)
     if (table[posicion].first == NULL) {
         table[posicion].first = toinsert;
         table[posicion].last = toinsert;
-    } 
+    }
     else 
     {
         toinsert->prev = table[posicion].last;
         table[posicion].last->next = toinsert;
         table[posicion].last = toinsert;
     }
-
-    
 }
 
 int hash(char *s);
@@ -59,22 +78,23 @@ int main()
     table->first = NULL;
     table->last = NULL;
 
-	setbuf(stdout, NULL);
-
 	while(1)
 	{
+        setbuf(stdout, NULL);
 		printf("Dame una llave, FIN para terminar: ");
 		scanf("%s",key);
 		if(strcmp(key,"FIN")==0)
 			break;
+        fflush(stdin);
+
 		printf("Nombre completo: ");
 		scanf("%s",nombre);
+        fflush(stdin);
 
 		hash_result = hash(key);
         p = hash_result % 10;
 
-        list_insert(p, key, nombre);
-
+        hash_insert(p, key, nombre);
 	}
 
 
@@ -88,9 +108,24 @@ int main()
             printf("<%s>, <%s> ", toprint->key, toprint->data);
             toprint = toprint->next;
         }
-
+        
         printf("\n");
     }
+
+    // 3. Preguntar al usuario sobre una búsqueda
+    while (1)
+    {
+		printf("Dame una llave para buscar, FIN para terminar: ");
+		scanf("%s",key);
+		if(strcmp(key,"FIN")==0)
+			break;
+
+		hash_result = hash(key);
+        p = hash_result % 10;
+
+        hash_find(p, key);
+    }
+    
 
 }
 
