@@ -1,9 +1,3 @@
-/*
- * list.c
- *
- *  Created on: 24 mar. 2023
- *      Author: jluis
- */
 #include "list.h"
 
 LIST list_create()

@@ -1,9 +1,3 @@
-/*
- * list.h
- *
- *  Created on: 24 mar. 2023
- *      Author: jluis
- */
 #include "datatypes.h"
 
 #ifndef LIST_H_

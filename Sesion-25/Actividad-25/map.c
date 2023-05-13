@@ -2,70 +2,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
-
-struct STRMLNODE {
-	char key[60];
-	char data[80];
-	struct STRMLNODE *next;
-};
-
-struct STRMAPLIST {
-	struct STRMLNODE *first;
-	struct STRMLNODE *last;
-};
-
-typedef struct STRMAPLIST MAPLIST;
-
-#define M 6
-
-MAPLIST table[M];
-
-unsigned long long hash(char *s);
-void maplist_table_init(MAPLIST *table,int m);
-void maplist_insert(MAPLIST *list,char *key,char *data);
-void maplist_display(MAPLIST list);
-void map_insert(MAPLIST *map,char *key,char *data);
-
-
-int main()
-{
-	char key[60];
-	char nombre[80];
-	// unsigned long long hashcode;
-	int i;
-	// int p;
-
-	maplist_table_init(table,M);
-
-	setbuf(stdout,NULL);
-
-	while(1)
-	{
-		printf("Dame una llave, FIN para terminar :");
-		scanf("%s",key);
-		if(strcmp(key,"FIN")==0)
-			break;
-		printf("Nombre completo :");
-		scanf("%s",nombre);
-
-		map_insert(table,key,nombre);
-
-		// Despliega las listas
-		for(i=0;i<M;i++)
-		{
-			printf("(%d)  ",i);
-			maplist_display(table[i]);
-		}
-	}
-
-	// Despliega las listas
-	for(i=0;i<M;i++)
-	{
-		printf("(%d)  ",i);
-		maplist_display(table[i]);
-	}
-
-}
+#include "map.h"
 
 unsigned long long hash(char *s)
 {
@@ -124,7 +61,7 @@ void maplist_insert(MAPLIST *list,char *key,char *data)
 	strcpy(ptr->data,data);
 }
 
-void map_insert(MAPLIST *map,char *key,char *data)
+void map_insert(MAPLIST *map,char *key,char *data, int M)
 {
 	unsigned long long hashcode = hash(key);
 	int p = (int) hashcode % M;

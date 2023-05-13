@@ -1,9 +1,3 @@
-/*
- * ejemplolista.c
- *
- *  Created on: 24 mar. 2023
- *      Author: jluis
- */
 #include <stdio.h>
 #include "list.h"
 
