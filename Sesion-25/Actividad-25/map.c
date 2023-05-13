@@ -30,24 +30,24 @@ unsigned long long hash(char *s)
 
 void maplist_table_init(MAPLIST *table,int m)
 {
-	int i;
-	for(i=0;i<m;i++)
+	for (int i = 0; i < m; i++)
 	{
-		table[i].first=NULL;
-		table[i].last=NULL;
+		table[i].list->first = NULL;
+		table[i].list->last = NULL;
 	}
+	
 }
 
-void maplist_insert(MAPLIST *list,char *key,char *data)
+void maplist_insert(MAPLIST *lista_indice,char *key,char *data)
 {
-	struct STRMLNODE *ptr = list->first;
+	struct STR_LIST_NODE *ptr = lista_indice->list->first;
 
 	while(ptr!=NULL && strcmp(ptr->key,key)!=0)
 		ptr = ptr->next;
 
 	if(ptr==NULL)
 	{
-		ptr = malloc(sizeof(struct STRMLNODE));
+		ptr = malloc(sizeof(struct STR_LIST_NODE));
 		strcpy(ptr->key,key);
 		ptr->next = NULL;
 		if(list->first==NULL)
@@ -70,12 +70,12 @@ void map_insert(MAPLIST *map,char *key,char *data, int M)
 	p = (int) (hashcode % M);
 	printf("Posición en la tabla(p) es %d\n",p);
 
-	maplist_insert(&map[p],key,data);
+	maplist_insert(&map[p].list,key,data);
 }
 
 void maplist_display(MAPLIST list)
 {
-	struct STRMLNODE *ptr = list.first;
+	struct STR_LIST_NODE *ptr = list.list;
 
 	while(ptr!=NULL)
 	{

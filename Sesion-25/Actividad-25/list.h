@@ -3,8 +3,9 @@
 #ifndef LIST_H_
 #define LIST_H_
 
-struct STR_LIST_NODE {
-	TYPE elem;
+struct STR_LIST_NODE { // Nodo modificado para hash map
+	char key[60];
+	char data[80];
 	struct STR_LIST_NODE *prior,*next;
 };
 

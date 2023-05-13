@@ -2,16 +2,10 @@
 #define MAP_H_
 
 #include "datatypes.h"
-
-struct STRMLNODE {
-	char key[60];
-	char data[80];
-	struct STRMLNODE *next;
-};
+#include "list.h"
 
 struct STRMAPLIST {
-	struct STRMLNODE *first;
-	struct STRMLNODE *last;
+	LIST list;
 };
 
 typedef struct STRMAPLIST MAPLIST;
@@ -20,6 +14,6 @@ unsigned long long hash(char *s);
 void maplist_table_init(MAPLIST *table,int m);
 void maplist_insert(MAPLIST *list,char *key,char *data);
 void maplist_display(MAPLIST list);
-void map_insert(MAPLIST *map,char *key,char *data);
+void map_insert(MAPLIST *map,char *key,char *data, int M);
 
 #endif /* MAP_H_ */

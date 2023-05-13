@@ -17,7 +17,7 @@ int main()
 	int i;
 	// int p;
 
-	maplist_table_init(table,M);
+	maplist_table_init(table, M);
 
 	setbuf(stdout,NULL);
 
